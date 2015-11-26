@@ -15,6 +15,8 @@ import time
 hourPattern = []
 minPattern = []
 
+sense = SenseHat()
+
 #pre-defined patterns - groups of x,y co-ords - 0,0 is bottom right with GPIO at bottom
 fivePattern = [[7,6],[6,6],[4,6],[2,6]]
 tenPattern = [[1,7],[1,6],[0,6]]
@@ -28,7 +30,7 @@ toPattern = [[1,5],[0,5]]
 #function to light the pixels we need to display the time
 #pixels is a list of pixels
 def showTime(pixels):
-	UH.clear()
+	sense.clear()
 	for coords in pixels:
 		sense.set_pixel(coords[0],coords[1],255,0,255)		#magenta
 
