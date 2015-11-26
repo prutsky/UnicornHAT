@@ -3,8 +3,12 @@
 # wordclock.py by Carl Monk (@ForToffee)
 # https://github.com/ForToffee/UnicornHAT
 # no unicorns were harmed in the making of this code
+#
+# adapted for Sense HAT by Erwin Harkink
 
-import unicornhat as UH
+#import unicornhat as UH
+from sense_hat import SenseHat
+
 import time
 
 #global variables
@@ -26,9 +30,9 @@ toPattern = [[1,5],[0,5]]
 def showTime(pixels):
 	UH.clear()
 	for coords in pixels:
-		UH.set_pixel(coords[0],coords[1],255,0,255)		#magenta
+		sense.set_pixel(coords[0],coords[1],255,0,255)		#magenta
 
-	UH.show()	#once pixels set, call .show() to enable them
+	#UH.show()	#once pixels set, call .show() to enable them
 		
 #function to light the '*' character to show seconds and minutes elapsing
 def showTick(m):
@@ -55,8 +59,8 @@ def showTick(m):
 	elif minPart == 4 : #:m4 or :m9
 		colour = [0,255,255]	#cyan
 
-	UH.set_pixel(5,5,colour[0],colour[1],colour[2])	#5,5 is the position of '*'
-	UH.show()
+	sense.set_pixel(5,5,colour[0],colour[1],colour[2])	#5,5 is the position of '*'
+	#UH.show()
 
 #takes the current hour and provides the required pattern of letters
 def getHourPattern(h,m):
